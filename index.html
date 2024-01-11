@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>assignment</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form id="form" class="form">
+      <label class="label" for="name">name:</label>
+      <br />
+      <input class="input" type="text" id="name" />
+      <br />
+      <label class="label" for="email">email:</label>
+      <br />
+      <input class="input" type="text" id="email" />
+      <br />
+      <label class="label" for="age">age:</label>
+      <br />
+      <input class="input" type="text" id="age" />
+      <br />
+      <button class="btn" type="button" onclick="add()">Add Data</button>
+      <table id="table">
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>email</th>
+            <th>age</th>
+          </tr>
+        </thead>
+      </table>
+      <div class="alert" id="alert">
+        <p>add successful</p>
+        <button class="cancel-btn" onclick="exit()">X</button>
+      </div>
+    </form>
+
+    <script>
+      function add() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var age = document.getElementById("age").value;
+        var alert = document.getElementById("alert");
+        var table = document.getElementById("table");
+
+        if (name && email && age) {
+          event.preventDefault();
+          var row = table.insertRow(table.rows.length);
+          table.style.opacity = 1;
+          alert.style.opacity = 1;
+
+          var cell1 = row.insertCell();
+          var cell2 = row.insertCell();
+          var cell3 = row.insertCell();
+
+          cell1.innerHTML = name;
+          cell2.innerHTML = email;
+          cell3.innerHTML = age;
+
+          document.getElementById("name").value = "";
+          document.getElementById("email").value = "";
+          document.getElementById("age").value = "";
+        }
+      }
+      function exit() {
+        var alert = document.getElementById("alert");
+        event.preventDefault();
+        alert.style.opacity = 0;
+      }
+    </script>
+  </body>
+</html>
